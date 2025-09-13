@@ -1,4 +1,4 @@
-# Estadísticas - FCE - Instrucciones para Github Copilot
+# Estadística I (TGAD FCE-UBA) - Instrucciones para Github Copilot
 
 > **📋 INSTRUCCIONES COMPLETAS**: Lee todas las instrucciones detalladas y unificadas en [`AGENTS.md`](../AGENTS.md)
 

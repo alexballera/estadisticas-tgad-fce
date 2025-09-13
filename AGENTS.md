@@ -1,6 +1,9 @@
-# Instrucciones para Agentes de IA en EstadisticaI
+# Instrucciones para Agentes de IA - Estadística I (TGAD FCE-UBA)
 
-## Descripción general del proyecto
+## Instrucción Principal
+**SIEMPRE responde en español latinoamericano.** Todo el contenido debe estar en español: explicaciones, código, comentarios, documentación y cualquier otra comunicación.
+
+## Contexto del Proyecto
 
 Este repositorio contiene Jupyter Notebooks y materiales de apoyo para la materia Estadística I (Cátedra Bianco, TGAD, FCE UBA). Está organizado por temas, con cada carpeta representando una unidad del curso y conteniendo uno o más notebooks con teoría, ejemplos y ejercicios.
 
