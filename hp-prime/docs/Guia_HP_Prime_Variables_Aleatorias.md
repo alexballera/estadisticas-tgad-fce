@@ -114,13 +114,10 @@ La HP Prime **no tiene una función nativa**. Debemos crearla.
     ```
 
 - **Probabilidad Acumulada P(X ≤ k):**
-  Usa la función `SUM` junto con la función que creaste:
+  Para calcular la probabilidad acumulada, usa la función `SUM` directamente con la función `Hypergeo` que ya definiste.
+  - **Enunciado:** Con los mismos datos (N=50, K=10, n=5), ¿cuál es la probabilidad de encontrar **2 o menos** fusibles defectuosos (k≤2)?
   ```cas
-  F_Hypergeo(N, K, n, k) := SUM(Hypergeo(N,K,n,i), i, 0, k)
-  ```
-  - **Enunciado:** Con los mismos datos, ¿cuál es la probabilidad de encontrar **2 o menos** fusibles defectuosos (k≤2)?
-  ```cas
-  F_Hypergeo(50, 10, 5, 2)
+  SUM(Hypergeo(50, 10, 5, j), j, 0, 2)
   
   // Resultado: ≈ 0.9517
   ```
