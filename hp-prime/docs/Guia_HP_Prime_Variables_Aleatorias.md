@@ -12,7 +12,7 @@ Esta guía es una referencia directa para calcular probabilidades de **Variables
 
 La forma más directa de usar estas funciones es escribiendo su nombre en la línea de comandos del modo CAS. Alternativamente, se pueden encontrar en el menú de la calculadora:
 
-- **Toolbox** → **Math** → **Probability**
+- **Toolbox** → **Math** → **Probability** → **Densidad / Acumulada**
 
 ---
 
