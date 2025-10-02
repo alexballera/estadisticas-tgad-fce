@@ -53,6 +53,44 @@ Al desarrollar contenido, considera ambas herramientas y proporciona ejemplos o 
 - No agregues scripts de build, CI/CD o automatización de tests salvo que se solicite explícitamente.
 - Usa los notebooks existentes como referencia de estilo y estructura.
 
+## Estándares de código y formato
+
+### Estructura de notebooks
+
+- **Títulos de pasos**: Usar formato `### Paso N: Descripción` (heading nivel 3) para los pasos dentro de un ejercicio.
+- **Títulos de ejercicios**: Usar formato `# Ejercicio N` (heading nivel 1) para cada ejercicio nuevo.
+
+### Formato de código Python
+
+- **f-strings**: Usar f-strings (`f"..."`) **solo** cuando se interpolan variables o expresiones. Para strings literales sin variables, usar strings simples (`"..."`).
+
+  ```python
+  # ✅ Correcto
+  print("Resultados finales")  # Sin variables
+  print(f"E(X) = {valor:.2f}")  # Con variables
+  
+  # ❌ Incorrecto
+  print(f"Resultados finales")  # No necesita f-string
+  ```
+
+- **Formato numérico**: Todos los resultados numéricos deben mostrarse con **2 decimales** usando `.2f` en el formato.
+
+  ```python
+  # ✅ Correcto
+  print(f"V(X) = {varianza:.2f}")
+  print(f"σ(X) = {desviacion:.2f}")
+  
+  # ❌ Incorrecto
+  print(f"V(X) = {varianza}")  # Sin formato
+  print(f"σ(X) = {desviacion:.4f}")  # Más de 2 decimales
+  ```
+
+### Presentación de resultados
+
+- Usar emojis para mejorar la legibilidad: 📊 para tablas, 📐 para cálculos, ✅ para verificaciones, etc.
+- Separar secciones con líneas de `=` de 60 caracteres.
+- Incluir verificaciones cuando sea apropiado para validar los cálculos.
+
 ## Archivos y carpetas clave
 
 - `0 Elementos iniciales/`: Materiales y guías introductorias.
