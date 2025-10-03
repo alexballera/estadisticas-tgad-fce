@@ -92,35 +92,84 @@ Usa la función de distribución acumulada (la que termina en `_CDF`) como base 
   // Resultado: 0.67232
   ```
 
-### Distribución Hipergeométrica H(N, K, n)
+### Distribución Hipergeométrica H(N, M, n)
 
 La HP Prime **no tiene una función nativa**. Debemos crearla.
 
+**Notación de la cátedra:**
 - **N:** tamaño total de la población.
-- **K:** número de elementos "exitosos" en la población.
-- **n:** tamaño de la muestra extraída.
-- **k:** número de "éxitos" en la muestra.
+- **M:** número de elementos "exitosos" en la población (éxitos posibles).
+- **n:** tamaño de la muestra extraída (sin reposición).
+- **k:** número de "éxitos" en la muestra (variable aleatoria X).
 
-- **Función Personalizada para P(X = k):**
-  Define esta función una vez en el modo CAS:
+**Fórmula:** 
+$$P(X = k) = \frac{\binom{M}{k} \cdot \binom{N-M}{n-k}}{\binom{N}{n}}$$
+
+**Orden de parámetros:** Primero los "totales" (N, n), luego los "éxitos" (M, k)
+
+#### Crear la Función en HP Prime
+
+**Método 1: Definición directa en CAS (Recomendado)**
+```cas
+Hypergeo(N, M, n, k) := (COMB(M,k) * COMB(N-M,n-k)) / COMB(N,n)
+```
+
+**Método 2: Usando el editor de programas**
+1. Presiona `Shift` + `1` (Program)
+2. Selecciona `New` y escribe el nombre: `Hypergeo`
+3. Escribe el código:
+```cas
+EXPORT Hypergeo(N, M, n, k)
+BEGIN
+  RETURN (COMB(M,k) * COMB(N-M,n-k)) / COMB(N,n);
+END;
+```
+4. Presiona `Check` para verificar
+5. Presiona `ESC` para guardar
+
+#### Modificar/Ver una Función CAS Existente
+
+Si ya tienes la función definida con otros parámetros:
+
+1. **Ver la definición actual:**
+   - Entra a modo `CAS`
+   - Escribe: `Hypergeo` (sin paréntesis)
+   - Verás la definición actual
+
+2. **Redefinir (más simple):**
+   - En modo `CAS`, escribe la nueva definición:
+     ```cas
+     Hypergeo(N, M, n, k) := (COMB(M,k) * COMB(N-M,n-k)) / COMB(N,n)
+     ```
+   - Presiona `Enter` → se sobrescribe automáticamente
+
+3. **Eliminar y recrear:**
+   - En modo `CAS`, escribe: `PURGE(Hypergeo)`
+   - Luego crea la nueva versión
+
+#### Ejemplo de Uso
+
+- **Enunciado:** En una caja hay 50 fusibles (N=50), de los cuales 10 son defectuosos (M=10). Si se selecciona una muestra aleatoria de 5 fusibles (n=5) sin reposición, ¿cuál es la probabilidad de que **exactamente 2** de ellos sean defectuosos (k=2)?
+  
+  **Solución:**
   ```cas
-  Hypergeo(N, K, n, k) := (COMB(K,k) * COMB(N-K,n-k)) / COMB(N,n)
+  Hypergeo(50, 10, 5, 2)
+  
+  // Resultado: ≈ 0.2098
   ```
-  - **Enunciado:** En una caja hay 50 fusibles (N=50), de los cuales 10 son defectuosos (K=10). Si se selecciona una muestra aleatoria de 5 fusibles (n=5), ¿cuál es la probabilidad de que **exactamente 2** de ellos sean defectuosos (k=2)?
-    ```cas
-    Hypergeo(50, 10, 5, 2)
-    
-    // Resultado: ≈ 0.2098
-    ```
 
-- **Probabilidad Acumulada P(X ≤ k):**
-  Para calcular la probabilidad acumulada, usa la función `SUM` directamente con la función `Hypergeo` que ya definiste.
-  - **Enunciado:** Con los mismos datos (N=50, K=10, n=5), ¿cuál es la probabilidad de encontrar **2 o menos** fusibles defectuosos (k≤2)?
+#### Probabilidad Acumulada P(X ≤ k)
+
+Para calcular la probabilidad acumulada, usa la función `SUM`:
+
+- **Enunciado:** Con los mismos datos (N=50, M=10, n=5), ¿cuál es la probabilidad de encontrar **2 o menos** fusibles defectuosos (k≤2)?
   ```cas
   SUM(Hypergeo(50, 10, 5, j), j, 0, 2)
   
   // Resultado: ≈ 0.9517
   ```
+
+**Nota:** El orden de los parámetros es importante: **N (población total), M (éxitos en población), n (muestra), k (éxitos en muestra)**
 
 ---
 

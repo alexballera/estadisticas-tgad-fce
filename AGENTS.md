@@ -73,16 +73,23 @@ Al desarrollar contenido, considera ambas herramientas y proporciona ejemplos o 
   print(f"Resultados finales")  # No necesita f-string
   ```
 
-- **Formato numérico**: Todos los resultados numéricos deben mostrarse con **2 decimales** usando `.2f` en el formato.
+- **Formato numérico**: 
+  - **Probabilidades**: Usar **4 decimales** (`.4f`) para valores de probabilidad y cálculos relacionados
+  - **Otros valores estadísticos**: Usar **2 decimales** (`.2f`) para esperanza, varianza, desviación estándar, etc.
 
   ```python
-  # ✅ Correcto
+  # ✅ Correcto - Probabilidades con 4 decimales
+  print(f"P(X = 3) = {probabilidad:.4f}")
+  print(f"P(X ≥ 1) = {prob_complemento:.4f}")
+  
+  # ✅ Correcto - Estadísticos con 2 decimales
+  print(f"E(X) = {esperanza:.2f}")
   print(f"V(X) = {varianza:.2f}")
   print(f"σ(X) = {desviacion:.2f}")
   
   # ❌ Incorrecto
+  print(f"P(X = 2) = {prob:.2f}")  # Probabilidades necesitan 4 decimales
   print(f"V(X) = {varianza}")  # Sin formato
-  print(f"σ(X) = {desviacion:.4f}")  # Más de 2 decimales
   ```
 
 ### Presentación de resultados
