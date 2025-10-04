@@ -57,8 +57,9 @@ Al desarrollar contenido, considera ambas herramientas y proporciona ejemplos o 
 
 ### Estructura de notebooks
 
-- **Títulos de pasos**: Usar formato `### Paso N: Descripción` (heading nivel 3) para los pasos dentro de un ejercicio.
 - **Títulos de ejercicios**: Usar formato `# Ejercicio N` (heading nivel 1) para cada ejercicio nuevo.
+- **Títulos de incisos**: Usar formato `### Inciso a)` (heading nivel 3) para cada inciso o apartado de respuesta dentro de un ejercicio.
+- **Títulos de pasos**: Usar formato `### Paso N: Descripción` (heading nivel 3) para los pasos dentro de un ejercicio cuando sea necesario detallar el proceso.
 
 ### Formato de código Python
 
@@ -96,7 +97,18 @@ Al desarrollar contenido, considera ambas herramientas y proporciona ejemplos o 
 
 - Usar emojis para mejorar la legibilidad: 📊 para tablas, 📐 para cálculos, ✅ para verificaciones, etc.
 - Separar secciones con líneas de `=` de 60 caracteres.
-- Incluir verificaciones cuando sea apropiado para validar los cálculos.
+- **Validaciones y verificaciones**: Se realizan en el chat durante la ejecución. **NO incluir** mensajes de validación, verificación o comparación con valores esperados en el código del notebook, a menos que el usuario lo solicite explícitamente.
+
+  ```python
+  # ✅ Correcto - Solo resultado
+  print(f"P(A) = {p_a:.4f}")
+  
+  # ❌ Incorrecto - No agregar validaciones en el código
+  print(f"P(A) = {p_a:.4f}")
+  print(f"Esperado: 0.40 ✅")  # NO hacer esto
+  if abs(p_a - 0.40) < 0.0001:
+      print("✅ Correcto!")  # NO hacer esto
+  ```
 
 ## Archivos y carpetas clave
 
