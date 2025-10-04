@@ -168,15 +168,217 @@ limit(F(x), x, punto, 1)  # Límite por derecha
 
 ### 5.1 Distribución Uniforme U(a,b)
 
-**Función de densidad:**
+#### 📋 **Definición y Propiedades**
+
+Una variable aleatoria X sigue una **distribución uniforme continua** en el intervalo [a, b] si todos los valores en ese intervalo tienen la misma probabilidad de ocurrir.
+
+**Notación:** X ~ U(a, b)
+
+**Parámetros:**
+- **a**: límite inferior del intervalo
+- **b**: límite superior del intervalo (con b > a)
+
+#### 📐 **Funciones principales**
+
+**Función de densidad de probabilidad:**
 ```
 f(x) := 1/(b-a)           # para a ≤ x ≤ b
+        0                  # en otro caso
 ```
 
-**Función de distribución:**
+**Función de distribución acumulada:**
 ```
-F(x) := (x-a)/(b-a)       # para a ≤ x ≤ b
+F(x) := 0                 # si x < a
+        (x-a)/(b-a)       # si a ≤ x ≤ b
+        1                 # si x > b
 ```
+
+**Valor esperado (media):**
+```
+E(X) = (a+b)/2
+```
+
+**Varianza:**
+```
+V(X) = (b-a)²/12
+```
+
+**Desviación estándar:**
+```
+σ(X) = (b-a)/sqrt(12)
+```
+
+#### 🔧 **Implementación en HP Prime**
+
+**Paso 1: Definir los parámetros**
+```
+# Asignar valores a los límites
+a := límite_inferior
+b := límite_superior
+```
+
+**Paso 2: Definir la función de densidad**
+```
+f(x) := 1/(b-a)
+```
+
+**Paso 3: Definir la función de distribución**
+```
+# Método 1: Directamente con la fórmula
+F(x) := (x-a)/(b-a)
+
+# Método 2: Usando integración (más general)
+F(x) := int(f(t), t, a, x)
+```
+
+**Paso 4: Verificar que es función de densidad válida**
+```
+# La integral debe dar 1
+int(f(x), x, a, b)        # Debe resultar: 1
+```
+
+#### 📊 **Cálculo de Probabilidades**
+
+**Probabilidades básicas:**
+```
+# P(X ≤ c) para a ≤ c ≤ b
+F(c)                      # → (c-a)/(b-a)
+
+# P(X < c) - Para variables continuas es igual a P(X ≤ c)
+F(c)                      # → (c-a)/(b-a)
+
+# P(X ≥ c)
+1 - F(c)                  # → (b-c)/(b-a)
+
+# P(X > c) - Para variables continuas es igual a P(X ≥ c)
+1 - F(c)                  # → (b-c)/(b-a)
+
+# P(c₁ < X < c₂) con a ≤ c₁ < c₂ ≤ b
+F(c₂) - F(c₁)            # → (c₂-c₁)/(b-a)
+
+# P(c₁ ≤ X ≤ c₂)
+F(c₂) - F(c₁)            # → (c₂-c₁)/(b-a)
+```
+
+#### 📈 **Estadísticos**
+
+```
+# Esperanza (Media)
+media := (a+b)/2
+simplify(media)
+
+# Varianza
+varianza := (b-a)^2/12
+simplify(varianza)
+
+# Desviación estándar
+desv_std := sqrt(varianza)
+simplify(desv_std)
+```
+
+#### 🎯 **Percentiles y Cuantiles**
+
+Para encontrar el valor x tal que P(X ≤ x) = p:
+
+```
+# Resolver F(x) = p
+solve((x-a)/(b-a) = p, x)
+
+# Resultado: x = a + p*(b-a)
+```
+
+**Cuartiles:**
+```
+# Primer cuartil (Q1): p = 0.25
+Q1 := a + 0.25*(b-a)
+
+# Mediana (Q2): p = 0.5
+Q2 := a + 0.5*(b-a)      # También es la media
+
+# Tercer cuartil (Q3): p = 0.75
+Q3 := a + 0.75*(b-a)
+```
+
+#### ✅ **Ejemplo completo genérico**
+
+```
+// Definir distribución uniforme U(a,b)
+// Supongamos U(c, d) donde c y d son valores específicos
+
+// Paso 1: Parámetros
+a := c
+b := d
+
+// Paso 2: Función de densidad
+f(x) := 1/(b-a)
+
+// Paso 3: Función de distribución
+F(x) := (x-a)/(b-a)
+
+// Paso 4: Verificación
+int(f(x), x, a, b)       // Debe dar 1
+
+// Paso 5: Estadísticos
+media := (a+b)/2
+varianza := (b-a)^2/12
+desv_std := sqrt((b-a)^2/12)
+
+// Paso 6: Probabilidades (para valores específicos c₁, c₂)
+F(c₁)                    // P(X ≤ c₁)
+1 - F(c₂)                // P(X > c₂)
+F(c₂) - F(c₁)           // P(c₁ < X < c₂)
+
+// Paso 7: Cuantiles
+solve(F(x) = 0.5, x)     // Mediana
+solve(F(x) = 0.25, x)    // Q1
+solve(F(x) = 0.75, x)    // Q3
+```
+
+#### 💡 **Propiedades especiales de la Uniforme**
+
+1. **Propiedad de memoria inexistente**: A diferencia de la exponencial, la uniforme no tiene propiedad de falta de memoria.
+
+2. **Simetría**: La distribución es simétrica alrededor de la media (a+b)/2.
+
+3. **Probabilidad uniforme**: 
+   ```
+   P(c₁ < X < c₂) = (c₂-c₁)/(b-a)
+   ```
+   Solo depende de la longitud del intervalo, no de su ubicación.
+
+4. **Para cualquier punto individual**:
+   ```
+   P(X = k) = 0    # Para cualquier k ∈ [a,b]
+   ```
+
+#### ⚠️ **Casos especiales**
+
+**Caso 1: Valores fuera del soporte**
+```
+# Para x < a
+F(x) = 0
+
+# Para x > b
+F(x) = 1
+```
+
+**Caso 2: Probabilidades condicionales**
+```
+# P(X < c₂ | X > c₁) con a ≤ c₁ < c₂ ≤ b
+P_cond := (F(c₂) - F(c₁))/(1 - F(c₁))
+simplify(P_cond)
+# Resultado: (c₂-c₁)/(b-c₁)
+```
+
+#### 📝 **Notas importantes**
+
+- ✅ Siempre verificar que a < b
+- ✅ Para variables continuas: P(X < c) = P(X ≤ c)
+- ✅ Los resultados se pueden obtener en forma exacta (fracciones)
+- ✅ Usar `simplify()` para expresiones más simples
+- ✅ Usar `approx()` para convertir a decimal si es necesario
+
+---
 
 ### 5.2 Distribución Exponencial Exp(λ)
 
