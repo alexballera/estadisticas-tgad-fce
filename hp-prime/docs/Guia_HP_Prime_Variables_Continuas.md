@@ -13,10 +13,12 @@ Esta guía explica cómo utilizar la calculadora HP Prime para trabajar con **Va
 ### 1.1 Verificar que f(x) es una función de densidad válida
 
 Una función f(x) es una función de densidad de probabilidad si:
+
 - f(x) ≥ 0 para todo x
 - ∫_{-∞}^{∞} f(x) dx = 1
 
 **Sintaxis en HP Prime:**
+
 ```
 # Definir la función de densidad
 f(x) := expresión_de_x
@@ -26,6 +28,7 @@ int(f(x), x, a, b)
 ```
 
 **Ejemplo práctico:**
+
 ```
 # Función f(x) = (3/26)x² para 1 ≤ x ≤ 3
 f(x) := (3/26)*x^2
@@ -33,6 +36,7 @@ f(x) := (3/26)*x^2
 # Verificar integral
 int(f(x), x, 1, 3)
 ```
+
 **Resultado:** `1` ✓
 
 ---
@@ -45,6 +49,7 @@ La función de distribución acumulada se define como:
 **F(x) = P(X ≤ x) = ∫_{-∞}^{x} f(t) dt**
 
 **Sintaxis en HP Prime:**
+
 ```
 # Calcular F(x) para un intervalo específico
 F(x) := int(f(t), t, límite_inferior, x)
@@ -54,6 +59,7 @@ simplify(F(x))
 ```
 
 **Ejemplo paso a paso:**
+
 ```
 # Definir f(x)
 f(x) := (3/26)*x^2
@@ -64,6 +70,7 @@ F(x) := int(f(t), t, 1, x)
 # Simplificar
 simplify(F(x))
 ```
+
 **Resultado:** `(x³-1)/26`
 
 ### 2.2 Función F(x) por tramos
@@ -105,27 +112,33 @@ F(3)        # Para x = 3
 ### 3.2 Ejemplos Prácticos
 
 **Ejemplo 1: P(X ≤ 2)**
+
 ```
 F(2)
 # o directamente:
 (2^3-1)/26
 ```
+
 **Resultado:** `7/26 ≈ 0.2692`
 
 **Ejemplo 2: P(1.5 < X ≤ 2.5)**
+
 ```
 F(2.5) - F(1.5)
 # o paso a paso:
 ((2.5)^3-1)/26 - ((1.5)^3-1)/26
 ```
+
 **Resultado:** `12.25/26 ≈ 0.4712`
 
 **Ejemplo 3: P(X > 2)**
+
 ```
 1 - F(2)
 # o directamente:
 1 - (2^3-1)/26
 ```
+
 **Resultado:** `19/26 ≈ 0.7308`
 
 ---
@@ -175,18 +188,21 @@ Una variable aleatoria X sigue una **distribución uniforme continua** en el int
 **Notación:** X ~ U(a, b)
 
 **Parámetros:**
+
 - **a**: límite inferior del intervalo
 - **b**: límite superior del intervalo (con b > a)
 
 #### 📐 **Funciones principales**
 
 **Función de densidad de probabilidad:**
+
 ```
 f(x) := 1/(b-a)           # para a ≤ x ≤ b
         0                  # en otro caso
 ```
 
 **Función de distribución acumulada:**
+
 ```
 F(x) := 0                 # si x < a
         (x-a)/(b-a)       # si a ≤ x ≤ b
@@ -194,16 +210,19 @@ F(x) := 0                 # si x < a
 ```
 
 **Valor esperado (media):**
+
 ```
 E(X) = (a+b)/2
 ```
 
 **Varianza:**
+
 ```
 V(X) = (b-a)²/12
 ```
 
 **Desviación estándar:**
+
 ```
 σ(X) = (b-a)/sqrt(12)
 ```
@@ -211,6 +230,7 @@ V(X) = (b-a)²/12
 #### 🔧 **Implementación en HP Prime**
 
 **Paso 1: Definir los parámetros**
+
 ```
 # Asignar valores a los límites
 a := límite_inferior
@@ -218,11 +238,13 @@ b := límite_superior
 ```
 
 **Paso 2: Definir la función de densidad**
+
 ```
 f(x) := 1/(b-a)
 ```
 
 **Paso 3: Definir la función de distribución**
+
 ```
 # Método 1: Directamente con la fórmula
 F(x) := (x-a)/(b-a)
@@ -232,6 +254,7 @@ F(x) := int(f(t), t, a, x)
 ```
 
 **Paso 4: Verificar que es función de densidad válida**
+
 ```
 # La integral debe dar 1
 int(f(x), x, a, b)        # Debe resultar: 1
@@ -240,6 +263,7 @@ int(f(x), x, a, b)        # Debe resultar: 1
 #### 📊 **Cálculo de Probabilidades**
 
 **Probabilidades básicas:**
+
 ```
 # P(X ≤ c) para a ≤ c ≤ b
 F(c)                      # → (c-a)/(b-a)
@@ -288,6 +312,7 @@ solve((x-a)/(b-a) = p, x)
 ```
 
 **Cuartiles:**
+
 ```
 # Primer cuartil (Q1): p = 0.25
 Q1 := a + 0.25*(b-a)
@@ -340,13 +365,16 @@ solve(F(x) = 0.75, x)    // Q3
 
 2. **Simetría**: La distribución es simétrica alrededor de la media (a+b)/2.
 
-3. **Probabilidad uniforme**: 
+3. **Probabilidad uniforme**:
+
    ```
    P(c₁ < X < c₂) = (c₂-c₁)/(b-a)
    ```
+
    Solo depende de la longitud del intervalo, no de su ubicación.
 
 4. **Para cualquier punto individual**:
+
    ```
    P(X = k) = 0    # Para cualquier k ∈ [a,b]
    ```
@@ -354,6 +382,7 @@ solve(F(x) = 0.75, x)    // Q3
 #### ⚠️ **Casos especiales**
 
 **Caso 1: Valores fuera del soporte**
+
 ```
 # Para x < a
 F(x) = 0
@@ -363,6 +392,7 @@ F(x) = 1
 ```
 
 **Caso 2: Probabilidades condicionales**
+
 ```
 # P(X < c₂ | X > c₁) con a ≤ c₁ < c₂ ≤ b
 P_cond := (F(c₂) - F(c₁))/(1 - F(c₁))
@@ -382,14 +412,121 @@ simplify(P_cond)
 
 ### 5.2 Distribución Exponencial Exp(λ)
 
-**Función de densidad:**
-```
-f(x) := λ*exp(-λ*x)       # para x ≥ 0
+⚠️ **La HP Prime NO tiene función nativa para la Exponencial.** Debes crearla manualmente.
+
+**Parámetros:**
+- **λ** (lambda): Tasa de ocurrencia por unidad de tiempo
+- **Media**: E(X) = 1/λ
+- **Varianza**: V(X) = 1/λ²
+
+#### Crear Función Exponencial en CAS
+
+**Método 1: Función de Probabilidad Acumulada (Recomendado)**
+
+Define una función que calcule directamente P(X ≤ x):
+
+```cas
+Expon_CDF(lambda, x) := 1 - exp(-lambda*x)
 ```
 
-**Función de distribución:**
+**Uso:**
+```cas
+# Ejemplo: λ = 0.04, P(X < 10)
+Expon_CDF(0.04, 10)
+
+# Resultado: 0.3296799539643607 ≈ 0.3297
 ```
-F(x) := 1 - exp(-λ*x)     # para x ≥ 0
+
+**Método 2: Definir funciones f(x) y F(x) separadas**
+
+Si prefieres trabajar con la función de densidad y distribución por separado:
+
+```cas
+# Definir el parámetro
+lambda := 0.04
+
+# Función de densidad
+f_expon(x) := lambda*exp(-lambda*x)
+
+# Función de distribución acumulada
+F_expon(x) := 1 - exp(-lambda*x)
+```
+
+**Uso:**
+```cas
+# P(X < 10)
+F_expon(10)
+
+# P(X > 10) = 1 - F(10)
+1 - F_expon(10)
+
+# P(5 < X < 15) = F(15) - F(5)
+F_expon(15) - F_expon(5)
+```
+
+#### Modificar/Ver una Función CAS Existente
+
+Si ya tienes `Expon_CDF` definida y quieres modificarla:
+
+1. **Ver la definición actual:**
+   ```cas
+   Expon_CDF
+   ```
+
+2. **Redefinir:**
+   ```cas
+   Expon_CDF(lambda, x) := 1 - exp(-lambda*x)
+   ```
+
+3. **Eliminar:**
+   ```cas
+   PURGE(Expon_CDF)
+   ```
+
+#### Ejemplo Completo - Ejercicio 14
+
+**Enunciado:** El tiempo de revisión de motores sigue una distribución exponencial con media de 25 minutos. ¿Cuál es la probabilidad de que el tiempo sea menor a 10 minutos?
+
+**Solución:**
+
+```cas
+# Paso 1: Calcular λ
+# Si media = 25 min, entonces λ = 1/25 = 0.04
+lambda := 1/25
+
+# Paso 2: Crear la función (si no existe)
+Expon_CDF(lambda, x) := 1 - exp(-lambda*x)
+
+# Paso 3: Calcular P(X < 10)
+Expon_CDF(0.04, 10)
+```
+
+**Resultado:** `0.329679953964...` ≈ **0.3297** (32.97%)
+
+**Verificación manual:**
+```cas
+# Cálculo directo de F(x) = 1 - e^(-λx)
+1 - exp(-0.04*10)
+
+# O más explícito
+1 - exp(-0.4)
+```
+
+#### Propiedades Útiles de la Exponencial
+
+```cas
+# Media
+media := 1/lambda
+
+# Varianza
+varianza := 1/(lambda^2)
+
+# Desviación estándar
+desv_std := 1/lambda
+
+# Propiedad de falta de memoria: P(X > s+t | X > s) = P(X > t)
+# P(X > t) = e^(-λt)
+prob_mayor_t := exp(-lambda*t)
 ```
 
 ### 5.3 Distribución Normal N(μ,σ²)
@@ -436,6 +573,7 @@ normald(z)
 ## 7. Ejercicios de Práctica
 
 ### Ejercicio 1: Distribución Triangular
+
 Dada f(x) = 2x para 0 ≤ x ≤ 1:
 
 1. Verificar que es función de densidad
@@ -443,6 +581,7 @@ Dada f(x) = 2x para 0 ≤ x ≤ 1:
 3. Encontrar P(X ≤ 0.5)
 
 **Solución en HP Prime:**
+
 ```
 f(x) := 2*x
 int(f(x), x, 0, 1)        # Verificar = 1
@@ -452,9 +591,11 @@ F(0.5)                    # Resultado: 1/4
 ```
 
 ### Ejercicio 2: Mediana
+
 Para la función del ejercicio principal, encontrar la mediana.
 
 **Solución:**
+
 ```
 solve(F(x) = 0.5, x)      # Resolver (x³-1)/26 = 0.5
 ```

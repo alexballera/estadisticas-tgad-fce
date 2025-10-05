@@ -173,6 +173,97 @@ Para calcular la probabilidad acumulada, usa la función `SUM`:
 
 ---
 
+### Distribución Exponencial Exp(λ)
+
+⚠️ **La HP Prime NO tiene función nativa para la Exponencial.** Debes crearla manualmente.
+
+**Parámetros:**
+- **λ** (lambda): Tasa de ocurrencia por unidad de tiempo
+- **Media**: E(X) = 1/λ
+- **Varianza**: V(X) = 1/λ²
+
+**Fórmula:** 
+$$F(x) = P(X \leq x) = 1 - e^{-\lambda x}$$
+
+**Uso típico:** Tiempo hasta que ocurre un evento (variable continua)
+
+#### Crear la Función en HP Prime
+
+**Método 1: Definición directa en CAS (Recomendado)**
+```cas
+Expon_CDF(lambda, x) := 1 - exp(-lambda*x)
+```
+
+**Método 2: Usando funciones separadas**
+```cas
+# Definir el parámetro
+lambda := 0.04
+
+# Función de densidad (opcional)
+f_expon(x) := lambda*exp(-lambda*x)
+
+# Función de distribución acumulada
+F_expon(x) := 1 - exp(-lambda*x)
+```
+
+#### Modificar/Ver una Función CAS Existente
+
+1. **Ver la definición actual:**
+   - Entra a modo `CAS`
+   - Escribe: `Expon_CDF` (sin paréntesis)
+   - Verás la definición actual
+
+2. **Redefinir (más simple):**
+   - En modo `CAS`, escribe la nueva definición:
+     ```cas
+     Expon_CDF(lambda, x) := 1 - exp(-lambda*x)
+     ```
+   - Presiona `Enter` → se sobrescribe automáticamente
+
+3. **Eliminar y recrear:**
+   - En modo `CAS`, escribe: `PURGE(Expon_CDF)`
+   - Luego crea la nueva versión
+
+#### Ejemplo de Uso
+
+- **Enunciado:** El tiempo de revisión de motores sigue una distribución exponencial con media de 25 minutos (λ = 0.04). ¿Cuál es la probabilidad de que el tiempo sea **menor a 10 minutos**?
+  
+  **Solución:**
+  ```cas
+  Expon_CDF(0.04, 10)
+  
+  // Resultado: 0.3296799539643607 ≈ 0.3297
+  ```
+
+#### Cálculos Típicos con Exponencial
+
+**P(X ≤ x):** Probabilidad acumulada
+```cas
+Expon_CDF(0.04, 10)
+// Resultado: 0.3297
+```
+
+**P(X > x):** Complemento (propiedad de falta de memoria)
+```cas
+1 - Expon_CDF(0.04, 10)
+// O directamente:
+exp(-0.04*10)
+// Resultado: 0.6703
+```
+
+**P(a < X < b):** Probabilidad en intervalo
+```cas
+Expon_CDF(0.04, 20) - Expon_CDF(0.04, 10)
+// Resultado: P(10 < X < 20)
+```
+
+**Nota importante sobre probabilidad puntual:** 
+- ⚠️ Para variables continuas, **P(X = x₀) = 0** siempre
+- Solo tiene sentido calcular P(X ≤ x) o P(a < X < b)
+- La función de densidad f(x) NO es una probabilidad, es una densidad
+
+---
+
 ## 3. Variables Aleatorias Continuas
 
 ### Distribución Normal N(μ, σ²)
