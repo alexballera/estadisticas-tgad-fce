@@ -6,25 +6,19 @@ Esta carpeta contiene todos los datasets utilizados en el curso, organizados de 
 
 ```
 data/
-├── shared/              # Datasets compartidos entre múltiples unidades
+├── shared/              # Datasets compartidos entre unidades
 │   ├── titanic/        # Dataset Titanic (Kaggle)
 │   ├── financial/      # Datos financieros 2014-2018
 │   ├── banking/        # Datos bancarios
 │   └── otros/          # Otros datasets compartidos
 │
-├── examples/           # Datasets pequeños de ejemplo (< 1MB)
-│
-├── U0/                 # Datasets específicos de Unidad 0
-├── U1/                 # Datasets específicos de Unidad 1
-├── U2/                 # Datasets específicos de Unidad 2
-├── U3/                 # Datasets específicos de Unidad 3
-├── U4/                 # Datasets específicos de Unidad 4
-├── U5/                 # Datasets específicos de Unidad 5
-├── U6/                 # Datasets específicos de Unidad 6
-├── U7/                 # Datasets específicos de Unidad 7
-├── U8/                 # Datasets específicos de Unidad 8
-└── U9/                 # Datasets específicos de Unidad 9
+├── README.md           # Documentación principal
+├── GUIA_RAPIDA.md      # Guía de inicio rápido
+├── MIGRACION.md        # Registro del proceso de migración
+└── dataset_loader.py   # Helper para carga fácil de datasets
 ```
+
+**Nota**: Si necesitas agregar datasets específicos de una unidad, créalos directamente en carpetas dentro de `data/` según necesites (ej: `data/unidad5/`, `data/regresion/`, etc.)
 
 ## 🎯 Uso en Notebooks
 
@@ -61,8 +55,9 @@ DATA_DIR = Path('..') / 'data'  # Desde notebooks en unidades
 # Cargar dataset compartido
 df = pd.read_csv(DATA_DIR / 'shared' / 'titanic' / 'train.csv')
 
-# Cargar dataset específico de unidad
-df = pd.read_csv(DATA_DIR / 'U5' / 'mi_dataset.csv')
+# Si creas datasets específicos, créalos en subcarpetas dentro de data/
+# Ejemplo: data/regresion/mi_dataset.csv
+df = pd.read_csv(DATA_DIR / 'regresion' / 'mi_dataset.csv')
 ```
 
 ## 📊 Datasets Disponibles
@@ -117,8 +112,8 @@ Los datasets están excluidos en `.gitignore`, pero la estructura de carpetas y 
 
 1. **Colocar el archivo** en la carpeta apropiada:
    - Si se usa en múltiples unidades → `data/shared/[categoria]/`
-   - Si es específico de una unidad → `data/U[número]/`
-   - Si es pequeño (<1MB) y de ejemplo → `data/examples/`
+   - Si es específico de un tema → Crear carpeta en `data/[tema]/` (ej: `data/regresion/`)
+   - Si es pequeño (<1MB) y de ejemplo → `data/shared/ejemplos/`
 
 2. **Documentar** en el README de la carpeta correspondiente
 

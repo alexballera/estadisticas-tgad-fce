@@ -57,24 +57,21 @@ Thumbs.db
 .coverage
 htmlcov/
 
-# Data files (if any)
-data/raw/
-data/processed/
-
+# Data files
 # Excluir todos los datasets
 *.csv
 *.xlsx
 *.xls
 
 # EXCEPTO: datasets de ejemplo pequeños y READMEs
-!data/examples/*.csv
-!data/examples/*.xlsx
-!example_data.csv
+!data/shared/*/README.md
 !data/**/README.md
 !data/README.md
+!example_data.csv
 
-# Mantener estructura de carpetas vacías
-!data/**/.gitkeep
+# Python cache
+data/__pycache__/
+*.pyc
 
 # Temporary files
 tmp/

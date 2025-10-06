@@ -42,8 +42,7 @@ El curso está organizado en **10 unidades temáticas**, cada una con notebooks 
 El proyecto utiliza una **estructura centralizada de datasets** en la carpeta `data/`:
 
 - **`data/shared/`**: Datasets compartidos entre múltiples unidades (Titanic, Financial, Banking, etc.)
-- **`data/U[0-9]/`**: Datasets específicos de cada unidad
-- **`data/examples/`**: Datasets pequeños de ejemplo
+- **Otras carpetas**: Créalas según necesites para datasets específicos de temas
 
 📖 **Consulta [data/README.md](data/README.md)** para documentación completa de todos los datasets disponibles.
 
@@ -122,9 +121,9 @@ EstadisticaI/
 │   │   ├── financial/            # Datos financieros
 │   │   ├── banking/              # Datos bancarios
 │   │   └── otros/                # Otros datasets
-│   ├── examples/                 # Datasets de ejemplo pequeños
-│   ├── U0/ ... U9/              # Datasets específicos por unidad
-│   └── README.md                # Documentación de datasets
+│   ├── README.md                 # Documentación de datasets
+│   ├── GUIA_RAPIDA.md           # Guía rápida de uso
+│   └── dataset_loader.py        # Helper para carga de datos
 ├── practicas/                     # Prácticas y ejercicios
 │   ├── practica0/
 │   ├── practica1-probabilidad/
