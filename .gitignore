@@ -60,10 +60,21 @@ htmlcov/
 # Data files (if any)
 data/raw/
 data/processed/
+
+# Excluir todos los datasets
 *.csv
 *.xlsx
 *.xls
+
+# EXCEPTO: datasets de ejemplo pequeños y READMEs
+!data/examples/*.csv
+!data/examples/*.xlsx
 !example_data.csv
+!data/**/README.md
+!data/README.md
+
+# Mantener estructura de carpetas vacías
+!data/**/.gitkeep
 
 # Temporary files
 tmp/

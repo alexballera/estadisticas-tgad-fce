@@ -37,19 +37,29 @@ El curso está organizado en **10 unidades temáticas**, cada una con notebooks 
 
 ## � Recursos Educativos
 
+### Datasets
+
+El proyecto utiliza una **estructura centralizada de datasets** en la carpeta `data/`:
+
+- **`data/shared/`**: Datasets compartidos entre múltiples unidades (Titanic, Financial, Banking, etc.)
+- **`data/U[0-9]/`**: Datasets específicos de cada unidad
+- **`data/examples/`**: Datasets pequeños de ejemplo
+
+📖 **Consulta [data/README.md](data/README.md)** para documentación completa de todos los datasets disponibles.
+
+**Nota importante**: Los datasets grandes (>1MB) no están versionados en Git. Consulta la documentación para opciones de descarga.
+
 ### Guías de Referencia
 
 En la carpeta `guides/` encontrarás:
 
 - **`Guia_Conjuntos_Python.ipynb`**: Guía completa de operaciones con conjuntos en Python
-- **`Guia_Rapida_HP_Prime_Conjuntos.md`**: Referencia rápida para operaciones de conjuntos en HP Prime
 
 ### Documentación HP Prime
 
 En la carpeta `hp-prime/` encontrarás:
 
 - **`docs/`**: Guías específicas y documentación técnica
-- **`imagenes/`**: Imágenes y capturas de pantalla de la calculadora
 - **`manuales/`**: Manuales oficiales y guías de usuario en PDF
 
 ## �🚀 Cómo Usar este Repositorio
@@ -96,25 +106,36 @@ En la carpeta `hp-prime/` encontrarás:
 
 ```text
 EstadisticaI/
-├── 0 Elementos iniciales/          # Introducción y fundamentos
-├── 1 Probabilidad/                 # Conceptos básicos de probabilidad
-├── 2 VA discretas/                 # Variables aleatorias discretas
-├── 3 VA continuas/                 # Variables aleatorias continuas
-├── 4 VA bidimensionales/           # Análisis conjunto de variables
-├── 5 Descriptiva/                  # Estadística descriptiva
-├── 6 Muestreo e IC/               # Muestreo e intervalos de confianza
-├── 7 Test de Hipotesis/           # Pruebas de hipótesis
-├── 8 Regresión Lineal/            # Modelos de regresión
-├── 9 Numeros Indice/              # Números índice
-├── guides/                         # Guías de referencia
-│   ├── Guia_Conjuntos_Python.ipynb
-│   └── Guia_Rapida_HP_Prime_Conjuntos.md
+├── 0_Elementos_iniciales/          # Introducción y fundamentos
+├── 1_Probabilidad/                 # Conceptos básicos de probabilidad
+├── 2_VA_discretas/                 # Variables aleatorias discretas
+├── 3_VA_continuas/                 # Variables aleatorias continuas
+├── 4_VA_bidimensionales/           # Análisis conjunto de variables
+├── 5_Descriptiva/                  # Estadística descriptiva
+├── 6_Muestreo_e_IC/               # Muestreo e intervalos de confianza
+├── 7_Test_de_Hipotesis/           # Pruebas de hipótesis
+├── 8_Regresion_Lineal/            # Modelos de regresión
+├── 9_Numeros_Indice/              # Números índice
+├── data/                          # 📊 Datasets centralizados
+│   ├── shared/                    # Datasets compartidos
+│   │   ├── titanic/              # Dataset Titanic
+│   │   ├── financial/            # Datos financieros
+│   │   ├── banking/              # Datos bancarios
+│   │   └── otros/                # Otros datasets
+│   ├── examples/                 # Datasets de ejemplo pequeños
+│   ├── U0/ ... U9/              # Datasets específicos por unidad
+│   └── README.md                # Documentación de datasets
+├── practicas/                     # Prácticas y ejercicios
+│   ├── practica0/
+│   ├── practica1-probabilidad/
+│   └── ...
+├── guias/                         # Guías de referencia
+│   └── Guia_Conjuntos_Python.ipynb
 ├── hp-prime/                      # Documentación HP Prime
 │   ├── docs/                      # Guías específicas
-│   ├── imagenes/                  # Recursos visuales
 │   └── manuales/                  # Manuales oficiales
 ├── .github/                       # Configuración GitHub
-├── AI_INSTRUCCIONES.md           # Instrucciones para asistentes IA
+├── AGENTS.md                      # Instrucciones para asistentes IA
 ├── requirements.txt              # Dependencias Python
 ├── start_jupyter.sh              # Script de inicio
 ├── .gitignore
