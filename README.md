@@ -13,9 +13,9 @@ Esta metodología permite a los estudiantes desarrollar tanto habilidades de pro
 
 ## 📚 Contenido del Curso
 
-El curso está organizado en **10 unidades temáticas**, cada una con notebooks interactivos de Jupyter que combinan teoría, ejemplos prácticos y ejercicios:
+El curso está organizado en **dos parciales académicos**, cada uno con múltiples unidades temáticas que incluyen notebooks interactivos de Jupyter combinando teoría, ejemplos prácticos y ejercicios:
 
-### Estructura de Unidades
+### 📋 Primer Parcial
 
 - **0. Elementos Iniciales** - Introducción a Python, Google Colab y el repositorio
 - **1. Probabilidad** - Conceptos básicos de probabilidad y aplicaciones
@@ -23,6 +23,9 @@ El curso está organizado en **10 unidades temáticas**, cada una con notebooks 
 - **3. Variables Aleatorias Continuas** - Distribuciones continuas y análisis
 - **4. Variables Aleatorias Bidimensionales** - Análisis conjunto de variables
 - **5. Estadística Descriptiva** - Medidas de tendencia central y dispersión
+
+### 📋 Segundo Parcial
+
 - **6. Muestreo e Intervalos de Confianza** - Técnicas de muestreo y estimación
 - **7. Test de Hipótesis** - Pruebas estadísticas y toma de decisiones
 - **8. Regresión Lineal** - Modelos de regresión y predicción
@@ -61,7 +64,18 @@ En la carpeta `hp-prime/` encontrarás:
 - **`docs/`**: Guías específicas y documentación técnica
 - **`manuales/`**: Manuales oficiales y guías de usuario en PDF
 
-## �🚀 Cómo Usar este Repositorio
+## 🚀 Cómo Usar este Repositorio
+
+### 📂 Navegación por la Nueva Estructura
+
+El repositorio está organizado según la **estructura académica del curso**:
+
+- **`1er-parcial/`**: Contiene las unidades 0-5 (Elementos iniciales hasta Estadística Descriptiva)
+- **`2do-parcial/`**: Contiene las unidades 6-9 (Muestreo hasta Números Índice)
+
+Esta organización refleja la división natural del curso y facilita el estudio progresivo por parciales.
+
+### 🛠️ Configuración Inicial
 
 1. **Clonar el repositorio:**
 
@@ -105,16 +119,18 @@ En la carpeta `hp-prime/` encontrarás:
 
 ```text
 EstadisticaI/
-├── 0_Elementos_iniciales/          # Introducción y fundamentos
-├── 1_Probabilidad/                 # Conceptos básicos de probabilidad
-├── 2_VA_discretas/                 # Variables aleatorias discretas
-├── 3_VA_continuas/                 # Variables aleatorias continuas
-├── 4_VA_bidimensionales/           # Análisis conjunto de variables
-├── 5_Descriptiva/                  # Estadística descriptiva
-├── 6_Muestreo_e_IC/               # Muestreo e intervalos de confianza
-├── 7_Test_de_Hipotesis/           # Pruebas de hipótesis
-├── 8_Regresion_Lineal/            # Modelos de regresión
-├── 9_Numeros_Indice/              # Números índice
+├── 1er-parcial/                   # 📋 Primer Parcial Académico
+│   ├── 0_Elementos_iniciales/     # Introducción y fundamentos
+│   ├── 1_Probabilidad/            # Conceptos básicos de probabilidad
+│   ├── 2_VA_discretas/            # Variables aleatorias discretas
+│   ├── 3_VA_continuas/            # Variables aleatorias continuas
+│   ├── 4_VA_bidimensionales/      # Análisis conjunto de variables
+│   └── 5_Descriptiva/             # Estadística descriptiva
+├── 2do-parcial/                   # 📋 Segundo Parcial Académico
+│   ├── 6_Muestreo_e_IC/          # Muestreo e intervalos de confianza
+│   ├── 7_Test_de_Hipotesis/      # Pruebas de hipótesis
+│   ├── 8_Regresion_Lineal/       # Modelos de regresión
+│   └── 9_Numeros_Indice/         # Números índice
 ├── data/                          # 📊 Datasets centralizados
 │   ├── shared/                    # Datasets compartidos
 │   │   ├── titanic/              # Dataset Titanic
@@ -124,15 +140,26 @@ EstadisticaI/
 │   ├── README.md                 # Documentación de datasets
 │   ├── GUIA_RAPIDA.md           # Guía rápida de uso
 │   └── dataset_loader.py        # Helper para carga de datos
-├── practicas/                     # Prácticas y ejercicios
+├── practicas/                     # Prácticas y ejercicios por tema
 │   ├── practica0/
 │   ├── practica1-probabilidad/
-│   └── ...
+│   ├── practica2-va-discretas/
+│   ├── practica3-va-continuas/
+│   ├── practica4-va-bidimensionales/
+│   ├── practica5-descriptivas/
+│   ├── practica6-muestreo-ic/
+│   ├── practica7-test-de-hipotesis/
+│   ├── practica8-regresiones/
+│   ├── practica9-numeros-indice/
+│   └── parciales/                # Examenes parciales
+│       ├── primero/
+│       └── segundo/
 ├── guias/                         # Guías de referencia
 │   └── Guia_Conjuntos_Python.ipynb
 ├── hp-prime/                      # Documentación HP Prime
 │   ├── docs/                      # Guías específicas
 │   └── manuales/                  # Manuales oficiales
+├── fuentes/                       # Material de referencia bibliográfica
 ├── .github/                       # Configuración GitHub
 ├── AGENTS.md                      # Instrucciones para asistentes IA
 ├── requirements.txt              # Dependencias Python
@@ -154,6 +181,19 @@ Al completar este curso, los estudiantes serán capaces de:
 - Integrar herramientas digitales y analógicas en el análisis estadístico
 
 ## � Metodología de Trabajo
+
+### 📚 Progresión Recomendada
+
+1. **Primer Parcial** (`1er-parcial/`):
+   - Comienza con `0_Elementos_iniciales/` para familiarizarte con las herramientas
+   - Progresa secuencialmente a través de las unidades 1-5
+   - Practica con los ejercicios correspondientes en `practicas/`
+
+2. **Segundo Parcial** (`2do-parcial/`):
+   - Continúa con las unidades 6-9 una vez dominado el primer parcial
+   - Utiliza el conocimiento previo como base para conceptos más avanzados
+
+### 🔧 Enfoque Pedagógico
 
 1. **Estudio Teórico**: Revisión de conceptos en los notebooks
 2. **Práctica en Python**: Implementación de algoritmos y análisis
